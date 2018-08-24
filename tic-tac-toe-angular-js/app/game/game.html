@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="myApp.game">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>ngOughts - crosses</title>
+
+  </head>
+
+  <body ng-controller="GameCtrl as vm">
+    <table>
+      <tbody>
+        <tr ng-repeat="row in vm.board.rows">
+          <td ng-repeat="cell in row.squares" ng-click="vm.play(vm.currentPlayer,cell)">
+            <button ng-if="cell.isInWinningLine" style="height: 100px; width: 100px; background-color: green"><h2>{{cell.text}}</h1></button>
+            <button ng-if="!cell.isInWinningLine" style="height: 100px; width: 100px; background-color: red"><h2>{{cell.text}}</h1></button>
+        </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p ng-if="vm.selectedSquareMessage">{{vm.selectedSquareMessage}}</p>
+    <p ng-if="vm.status">{{vm.status}}</p>
+
+    <button style="height: 30px; width: 300px;" ng-click="vm.initialise()">reset board</button>
+
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-route/angular-route.min.js"></script>
+    <script src="game.js"></script>
+    <script src="values/player_value.js"></script>
+    <script src="values/square_value.js"></script>
+    <script src="game_ctrl.js"></script>
+  </body>
+
+</html>
